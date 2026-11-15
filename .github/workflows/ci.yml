@@ -20,7 +20,7 @@ jobs:
       - name: Build image
         run: docker build -t localfirst-api ./backend
       - name: Scan image with Trivy
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@v0.35.0
         with:
           image-ref: localfirst-api
           format: table
@@ -28,3 +28,4 @@ jobs:
           ignore-unfixed: true
           vuln-type: os,library
           severity: CRITICAL,HIGH
+      - uses: aquasecurity/trivy-action@<full-commit-sha>
