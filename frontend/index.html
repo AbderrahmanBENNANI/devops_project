@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102a43"><meta name="description" content="Créateur local-first de CV et lettres">
+  <link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/styles.css">
+  <title>CV Studio — Local First</title>
+</head>
+<body>
+<header><div class="brand">CV<span>Studio</span></div><span class="privacy">● Vos brouillons restent sur cet appareil</span></header>
+<main>
+  <section class="hero"><p class="eyebrow">LOCAL-FIRST DOCUMENT STUDIO</p><h1>Votre parcours.<br><em>Votre prochaine opportunité.</em></h1>
+  <p>Créez un CV professionnel ou une lettre de motivation. Vos brouillons sont conservés dans votre navigateur.</p></section>
+  <nav class="tabs"><button class="tab active" data-tab="cv">Mon CV</button><button class="tab" data-tab="letter">Lettre</button></nav>
+  <section id="cv" class="panel">
+    <form id="cvForm">
+      <h2>Informations personnelles</h2><div class="grid">
+      <label>Nom complet<input name="full_name" required maxlength="100" placeholder="Prénom Nom"></label>
+      <label>Email<input name="email" type="email" required placeholder="vous@email.com"></label>
+      <label>Téléphone<input name="phone" placeholder="+212 ..."></label><label>Ville<input name="city" placeholder="Fès"></label></div>
+      <label>Intitulé professionnel<input name="title" placeholder="Responsable qualité / PMO"></label>
+      <label>Profil professionnel<textarea name="summary" rows="4" maxlength="2000"></textarea></label>
+      <label>Compétences (séparées par des virgules)<input name="skills" placeholder="Gestion de projet, Excel, ..."></label>
+      <h2>Expériences</h2><div id="experiences"></div><button type="button" class="secondary" id="addExperience">+ Ajouter une expérience</button>
+      <h2>Formation</h2><div id="education"></div><button type="button" class="secondary" id="addEducation">+ Ajouter une formation</button>
+      <div class="actions"><button type="button" class="secondary" id="saveCv">Enregistrer sur cet appareil</button><button class="primary">Générer mon PDF</button></div>
+    </form>
+  </section>
+  <section id="letter" class="panel hidden">
+    <form id="letterForm">
+      <h2>Lettre de motivation</h2>
+      <label>Nom complet<input name="full_name" required></label><label>Destinataire<input name="recipient" value="Madame, Monsieur"></label>
+      <label>Entreprise<input name="company"></label><label>Poste visé<input name="role" required></label>
+      <label>Paragraphes (un paragraphe par ligne)<textarea name="paragraphs" rows="8" required placeholder="Je vous adresse ma candidature..."></textarea></label>
+      <div class="actions"><button type="button" class="secondary" id="saveLetter">Enregistrer sur cet appareil</button><button class="primary">Générer la lettre PDF</button></div>
+    </form>
+  </section>
+  <p id="status" role="status" aria-live="polite"></p>
+  <footer>Confidentialité par conception · Export traité temporairement par le serveur · <span id="connection">Vérification API…</span></footer>
+</main><script src="/app.js"></script>
+</body></html>

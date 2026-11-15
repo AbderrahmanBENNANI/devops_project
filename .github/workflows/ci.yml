@@ -1,0 +1,30 @@
+name: CI
+on:
+  push:
+  pull_request:
+jobs:
+  test-and-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install backend dependencies
+        run: |
+          python -m pip install -r backend/requirements.txt
+          python -m pip install email-validator
+      - name: Run tests
+        working-directory: backend
+        run: pytest -q
+      - name: Build image
+        run: docker build -t localfirst-api ./backend
+      - name: Scan image with Trivy
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: localfirst-api
+          format: table
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: os,library
+          severity: CRITICAL,HIGH
