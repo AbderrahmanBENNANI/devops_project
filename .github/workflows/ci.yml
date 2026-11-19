@@ -16,7 +16,7 @@ jobs:
           python -m pip install email-validator
       - name: Run tests
         working-directory: backend
-        run: pytest -q
+        run: pytest 
       - name: Build image
         run: docker build -t localfirst-api ./backend
       - name: Scan image with Trivy
